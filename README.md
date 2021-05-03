@@ -186,6 +186,12 @@ sudo apt-get -y install postgresql
 ```
 
 ### WSL-specific configuration instructions
+By default on WSL - running the `psql` command will give you an error similar to:
+
+`psql: error: FATAL: role "<your_username>" does not exist`
+
+### The fix:
+
 * Run the following commands one by one, but change `<your_user_name>` to your linux username!
 ```
 # Auto start the postgres server
