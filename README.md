@@ -74,16 +74,12 @@ There are a few steps to the process, and we are going to follow github’s guid
 
 [Github Generating SSH Keys](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh)
 
-## Auto starting the ssh-agent
-To prevent your computer from demanding login credentials every time you want to push to github from your local machine - perform the following steps:
+## Starting the ssh-agent
+To prevent your computer from demanding login credentials every time you want to push to github from your local machine - perform the following steps from this [article](https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent)
 
 ```
-# Open the .zshrc config file
-code ~/.zshrc
-```
-* At the very top of the file add
-```
 eval `ssh-agent -s`
+ssh-add ~/.ssh/id_ed25519
 ```
 
 # Zsh, OhMyZsh, and P10k Theme + Font
@@ -148,7 +144,6 @@ p10k configure
 ```
 Now you can customize your terminal however you wish!
 
-**However!** be sure that if you enable "instant-prompt" your "eval `ssh-agent -s`" line is still at the very top of your `.zshrc`
 
 # Windows Terminal (Optional)
 Windows terminal is an application that gives you more flexibility and customizability with your terminal window than the regular terminal. 
