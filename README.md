@@ -68,13 +68,23 @@ git config --global credential.helper cache
 
 ## Setting up SSH Key to connect to github
 
-In this next part we will generate a SSH key on our local machine, and then link it to our github account. This is to prevent github from demanding login credentials every time you want to push to github from your local machine.
+In this next part we will generate a SSH key on our local machine, and then link it to our github account. 
 
 There are a few steps to the process, and we are going to follow github’s guide found here:
 
 [Github Generating SSH Keys](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh)
 
+## Auto starting the ssh-agent
+To prevent your computer from demanding login credentials every time you want to push to github from your local machine - perform the following steps:
 
+```
+# Open the .zshrc config file
+code ~/.zshrc
+```
+* At the very top of the file add
+```
+eval `ssh-agent -s`
+```
 
 # Zsh, OhMyZsh, and P10k Theme + Font
 We'll be using `Zsh` as our shell, rather than the default linux shell `bash`. 
@@ -130,6 +140,15 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
     - [MesloLGS NF Bold Italic.ttf](
     https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf)
 * Right click the Ubuntu terminal header bar, click on 'Properties', click on the 'Font' tab, and change the font fo 'MesloLGS NF', or whichever other font you've installed!
+
+
+The next time you open your terminal - it'll prompt you to run the powerlevel10k config tool. You can also manually run the tool with:
+```
+p10k configure
+```
+Now you can customize your terminal however you wish!
+
+**However!** be sure that if you enable "instant-prompt" your "eval `ssh-agent -s`" line is still at the very top of your `.zshrc`
 
 # Windows Terminal (Optional)
 Windows terminal is an application that gives you more flexibility and customizability with your terminal window than the regular terminal. 
@@ -190,8 +209,7 @@ By default on WSL - running the `psql` command will give you an error similar to
 
 `psql: error: FATAL: role "<your_username>" does not exist`
 
-### The fix:
-
+## The fix:
 * Run the following commands one by one, but change `<your_user_name>` to your linux username!
 ```
 # Auto start the postgres server
